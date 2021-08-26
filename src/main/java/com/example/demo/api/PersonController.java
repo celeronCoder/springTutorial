@@ -33,5 +33,14 @@ public class PersonController {
         return personService.getPersonByID(id)
                 .orElse(null);
     }
-//    TimeStamp : 43min
+
+    @DeleteMapping(path="{id}")
+    public void deletePersonByID(@PathVariable("id") UUID id) {
+        personService.deletePerson(id);
+    }
+
+    @PutMapping(path = "{id}")
+    public void updatePerson(@PathVariable("id") UUID id, @RequestBody Person personToUpdate) {
+        personService.updatePerson(id, personToUpdate);
+    }
 }
